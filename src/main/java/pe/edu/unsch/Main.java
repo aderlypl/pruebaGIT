@@ -7,5 +7,11 @@ public class Main {
 
         cuenta.depositar(50);
         System.out.println("Saldo después de depositar 50: " + cuenta.obtenerSaldo());
+
+        CuentaBancaria otra = new CuentaBancaria(0);
+        cuenta.transferir(otra, 30);
+        System.out.println("Saldo cuenta origen: " + cuenta.obtenerSaldo());
+        System.out.println("Saldo cuenta destino: " + otra.obtenerSaldo());
     }
 }
+
