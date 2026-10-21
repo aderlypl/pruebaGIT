@@ -32,6 +32,14 @@ public class CuentaBancaria {
         }
 
     }
+    public double cobrarComision(double porcentaje) {
+        if (porcentaje <= 0 || porcentaje > 100) {
+            return 0;
+        }
+        double comision = saldo * porcentaje / 100;
+        saldo -= comision;
+        return comision;
+    }
 
     public double getSaldo() {
         return saldo;

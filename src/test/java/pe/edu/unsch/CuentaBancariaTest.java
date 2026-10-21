@@ -48,5 +48,29 @@ public class CuentaBancariaTest {
         assertEquals(700, destino.getSaldo());
 
     }
+    @Test
+    void cobrarComisionValida() {
+        CuentaBancaria cuenta = new CuentaBancaria(1000);
+        double comision = cuenta.cobrarComision(2);
+        assertEquals(20, comision);
+        assertEquals(980, cuenta.getSaldo());
+    }
+
+    @Test
+    void cobrarComisionPorcentajeNegativo() {
+        CuentaBancaria cuenta = new CuentaBancaria(1000);
+        double comision = cuenta.cobrarComision(-5);
+        assertEquals(0, comision);
+        assertEquals(1000, cuenta.getSaldo());
+    }
+
+    @Test
+    void cobrarComisionPorcentajeMayorA100() {
+        CuentaBancaria cuenta = new CuentaBancaria(1000);
+        double comision = cuenta.cobrarComision(150);
+        assertEquals(0, comision);
+        assertEquals(1000, cuenta.getSaldo());
+    }
+
 }
 
